@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pro Spring</title>
+</head>
+<body>
+	<h1>Novo Veiculo</h1>
+	
+	<form action="salvar" method="GET" th:object="${dados_veiculo}"> <!-- th:objetc - Chama um objeto com dados do formulario. Tem ligação com mv.addObject("dados_veiculo", new Veiculo()); //Tenho que passar um objeto vazio para não dá problema na edição -->
+	
+		<input type="hidden" th:field="*{id}" name="id">
+		
+		<label>Numero do Cartao</label>
+		<input th:field="*{numero_cartao}" type="text" name="numero_cartao" />
+		
+		<label>Marca do veiculo</label>
+		<input th:field="*{marca}" type="text" name="marca" />
+		
+		<input type="submit" value="enviar"/>
+	</form>
+</body>
+</html>

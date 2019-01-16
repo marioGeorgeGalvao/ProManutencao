@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Lista de Veiculos</title>
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de veiculos</h1>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Número do cartão</th>
+						<th>Modelo</th>
+						<th>Açoes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="v : ${veiculos}"> <!-- Aqui no ${veiculos}, vem como o date[] do controller em php. "v" é o apelido -->
+						<td th:text="${v.numero_cartao}"></td>
+						<td th:text="${v.marca}"></td>
+						<td>
+							<a th:href="@{/veiculos/editar/{id}(id=${v.id})}" type="button" class="btn btn-outline btn-primary">Editar</a>
+							<a th:href="@{/veiculos/delete/{id}(id=${v.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+			
+			<a th:href="@{/veiculos/novo}">Novo Veiculo</a>
+
+		</div>
+	</div>
+	
+</body>
+
+</html>
